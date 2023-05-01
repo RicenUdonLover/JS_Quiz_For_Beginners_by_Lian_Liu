@@ -15,8 +15,8 @@ This is a simple quiz application to test your knowledge of JavaScript fundament
 To run this app, clone the repository and open the `index.html` file in your web browser.
 
 ```
-git clone 
-cd 
+git clone https://github.com/RicenUdonLover/JS_Quiz_For_Beginners_by_Lian_Liu.git
+
 ```
 
 Open `index.html` in your favorite web browser.
