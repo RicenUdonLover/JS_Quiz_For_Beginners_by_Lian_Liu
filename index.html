@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>JavaScript Quiz</title>
+    <style>
+        .hidden { display: none; }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center my-4">JavaScript Fundamentals Quiz</h1>
+        <div id="quiz-start" class="text-center">
+            <button id="start-btn" class="btn btn-primary">Start Quiz</button>
+        </div>
+        <div id="quiz-questions" class="hidden">
+            <p id="question"></p>
+            <div id="answers" class="list-group">
+                <!-- Answers will be added dynamically -->
+            </div>
+        </div>
+        <div id="quiz-end" class="hidden text-center">
+            <h2>Game Over</h2>
+            <p>Your score: <span id="final-score"></span></p>
+            <form>
+                <label for="initials">Enter your initials:</label>
+                <input type="text" id="initials" required>
+                <button type="submit" class="btn btn-primary">Save Score</button>
+            </form>
+            <div id="high-scores"></div>
+        </div>
+    </div>
+    <script src="./assets/js/index.js"></script>
+</body>
+
+</html>
