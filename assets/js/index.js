@@ -104,7 +104,7 @@ const questions = [
 
 
 let currentQuestionIndex = 0;
-let timer = 60; // In seconds
+let timer = 100; // In seconds
 let score = 0;
 let interval;
 
@@ -121,11 +121,14 @@ function startQuiz() {
 function updateTimer() {
     if (timer <= 0) {
         clearInterval(interval);
+        timer = 0;
         endQuiz();
     } else {
         timer--;
     }
+    document.getElementById('timer').textContent = `Time remaining: ${timer}s`;
 }
+
 
 function showQuestion() {
     const currentQuestion = questions[currentQuestionIndex];
