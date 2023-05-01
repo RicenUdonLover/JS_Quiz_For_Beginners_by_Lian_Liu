@@ -1,12 +1,13 @@
 const startButton = document.getElementById('start-btn');
-const questionElement = document.getElementById('question');
-const answersElement = document.getElementById('answers');
+const questionEl = document.getElementById('question');
+const answersEl = document.getElementById('answers');
 const quizQuestions = document.getElementById('quiz-questions');
 const quizEnd = document.getElementById('quiz-end');
 const finalScore = document.getElementById('final-score');
 const initialsInput = document.getElementById('initials');
 const saveScoreButton = document.querySelector('form button');
-const highScoresElement = document.getElementById('high-scores');
+const highScoresEl = document.getElementById('high-scores');
+const timerEl = document.getElementById('timer');
 
 const questions = [
     {
@@ -103,9 +104,9 @@ const questions = [
 ];
 
 
-let currentQuestionIndex = 0;
-let timer = 100; // In seconds
-let score = 0;
+var currentQuestionIndex = 0;
+var timer = 100; // In seconds
+var score = 0;
 let interval;
 
 startButton.addEventListener('click', startQuiz);
@@ -114,7 +115,8 @@ saveScoreButton.addEventListener('click', saveScore);
 function startQuiz() {
     startButton.classList.add('hidden');
     quizQuestions.classList.remove('hidden');
-    interval = setInterval(updateTimer, 1000);
+    timerEl.classList.remove('hidden');
+    interval = setInterval(updateTimer, 100);
     showQuestion();
 }
 
@@ -126,21 +128,21 @@ function updateTimer() {
     } else {
         timer--;
     }
-    document.getElementById('timer').textContent = `Time remaining: ${timer}s`;
+    timerEl.textContent = `Time remaining: ${timer}s`;
 }
 
 
 function showQuestion() {
     const currentQuestion = questions[currentQuestionIndex];
-    questionElement.textContent = currentQuestion.question;
+    questionEl.textContent = currentQuestion.question;
 
-    answersElement.innerHTML = '';
+    answersEl.innerHTML = '';
     currentQuestion.answers.forEach((answer, index) => {
         const button = document.createElement('button');
         button.classList.add('list-group-item', 'list-group-item-action');
         button.textContent = `${index + 1}. ${answer.text}`;
         button.addEventListener('click', () => handleAnswerClick(answer.correct));
-        answersElement.appendChild(button);
+        answersEl.appendChild(button);
     });
 }
 
@@ -167,7 +169,7 @@ function endQuiz() {
     finalScore.textContent = score;
 }
 
-function saveScore() {
+function saveScore(event) {
     event.preventDefault();
     const initials = initialsInput.value.trim();
 
@@ -184,12 +186,12 @@ function saveScore() {
 }
 
 function displayHighScores(highScores) {
-    highScoresElement.innerHTML = '<h3>High Scores</h3>';
+    highScoresEl.innerHTML = '<h3>High Scores</h3>';
 
     highScores.forEach((scoreEntry) => {
         const scoreDiv = document.createElement('div');
         scoreDiv.textContent = `${scoreEntry.initials}: ${scoreEntry.score}`;
-        highScoresElement.appendChild(scoreDiv);
+        highScoresEl.appendChild(scoreDiv);
     });
 }
 
